@@ -10,7 +10,6 @@ services:
       - db
     volumes:
       - ./api:/app
-      - bundle:/usr/local/bundle
     tty: true
     stdin_open: true
   db:
