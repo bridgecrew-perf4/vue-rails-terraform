@@ -12,16 +12,16 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        coins: null
-      };
-    },
-    mounted() {
-      this.axios
-        .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-        .then(response => (this.coins = response.data.bpi))
-    }
+export default {
+  data() {
+    return {
+      coins: null
+    };
+  },
+  mounted() {
+    this.axios
+      .get("https://api.coindesk.com/v1/bpi/currentprice.json")
+      .then(response => (this.coins = response.data.bpi));
   }
+};
 </script>
