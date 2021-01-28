@@ -16,9 +16,12 @@ services:
   db:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=your_app_name_development
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
     ports:
-      - "3307:3307"
+      - "4306:3306"
   front:
     build: ./front
     volumes:
