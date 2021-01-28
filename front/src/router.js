@@ -4,6 +4,7 @@ import App from "./App.vue";
 import Coin from "./Coin.vue";
 import Users from "./Users.vue";
 import User from "./User.vue";
+import UserCreate from "./UserCreate.vue";
 
 Vue.use(Router);
 
@@ -30,6 +31,11 @@ export default new Router({
       path: "/users/:id",
       name: "user",
       component: User
+    },
+    {
+      path: "/usercreate",
+      name: "userCreate",
+      component: UserCreate
     }
   ]
 });
