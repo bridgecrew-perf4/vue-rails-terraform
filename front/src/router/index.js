@@ -1,10 +1,10 @@
 import Vue from "vue";
 import Router from "vue-router";
-import App from "./App.vue";
-import Coin from "./Coin.vue";
-import Users from "./Users.vue";
-import User from "./User.vue";
-import UserCreate from "./UserCreate.vue";
+import Coin from "../views/Coin.vue";
+import Home from "../views/Home.vue";
+import Users from "../views/Users.vue";
+import User from "../views/User.vue";
+import UserCreate from "../views/UserCreate.vue";
 
 Vue.use(Router);
 
@@ -15,7 +15,7 @@ export default new Router({
     {
       path: "/",
       name: "home",
-      component: App
+      component: Home
     },
     {
       path: "/coin",

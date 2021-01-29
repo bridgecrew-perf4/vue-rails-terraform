@@ -29,9 +29,15 @@
   </v-container>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   data() {
+    const baseURL = "";
+    if (process.env.VUE_APP_USER_MOCK) {
+      this.baseURL = "test";
+    } else {
+      this.baseURL = "test";
+    }
     return {
       headers: [
         { text: "ID", value: "id" },
@@ -50,9 +56,10 @@ export default {
   },
   methods: {
     deleteUser(id) {
-      this.axios.delete(`http://localhost:3000/users/${id}`);
-      alert("ユーザー情報を削除しました");
-      location.reload(); // storeに置き換える
+      if (confirm("削除してよろしいですか？")) {
+        this.axios.delete(`http://localhost:3000/users/${id}`);
+        location.reload(); // storeに置き換える
+      }
     }
   }
 };
