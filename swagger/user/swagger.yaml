@@ -1,0 +1,95 @@
+openapi: 3.0.0
+info:
+  title: user
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  '/users/{user_id}':
+    parameters:
+      - schema:
+          type: string
+        name: user_id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: ./users.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    id: 115
+                    name: name
+                    email: email
+                    age: 11
+      operationId: get-users-id
+      description: ''
+    delete:
+      summary: ''
+      operationId: delete-users-user_id
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: ''
+      operationId: put-users-user_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./users.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./users.v1.yaml
+        description: ''
+  /users:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ./users.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    - id: 115
+                      name: name
+                      email: email
+                      age: 11
+                    - id: 116
+                      name: name116
+                      email: email117
+                      age: 11
+      operationId: get-usesrs
+    parameters: []
+    post:
+      summary: ''
+      operationId: post-users
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./users.v1.yaml
+components:
+  schemas: {}
