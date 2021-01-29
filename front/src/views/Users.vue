@@ -32,12 +32,6 @@
 <script lang="ts">
 export default {
   data() {
-    const baseURL = "";
-    if (process.env.VUE_APP_USER_MOCK) {
-      this.baseURL = "test";
-    } else {
-      this.baseURL = "test";
-    }
     return {
       headers: [
         { text: "ID", value: "id" },
@@ -51,7 +45,7 @@ export default {
   },
   mounted() {
     this.axios
-      .get("http://localhost:3000/users")
+      .get("http://localhost:3000//users")
       .then(response => (this.users = response.data));
   },
   methods: {
