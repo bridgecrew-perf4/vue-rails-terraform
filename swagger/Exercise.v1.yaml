@@ -1,0 +1,13 @@
+title: Exercise
+type: object
+description: ''
+properties:
+  id:
+    type: integer
+    description: 運動ID
+  menu:
+    type: string
+    description: 運動メニュー
+  calorie:
+    type: integer
+    description: 消費カロリー

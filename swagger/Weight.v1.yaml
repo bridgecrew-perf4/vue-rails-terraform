@@ -1,0 +1,15 @@
+title: Weight
+type: object
+properties:
+  id:
+    type: string
+    description: ID
+  weight:
+    type: number
+    description: 体重
+  measurement_time:
+    type: string
+    description: 計測時刻
+  body_fat_percentage:
+    type: string
+    description: 体脂肪率

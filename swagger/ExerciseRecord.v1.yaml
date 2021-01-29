@@ -1,0 +1,15 @@
+title: ExerciseRecord
+type: object
+properties:
+  id:
+    type: integer
+    description: 運動レコードID
+  exercise_id:
+    type: integer
+    description: 運動ID
+  number:
+    type: integer
+    description: 運動回数
+  exercise_time:
+    type: string
+    description: 運動時間

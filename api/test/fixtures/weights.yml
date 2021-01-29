@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: MyString
+  weight: 
+  measurement_time: MyString
+  body_fat_percentage: MyString
+
+two:
+  id: MyString
+  weight: 
+  measurement_time: MyString
+  body_fat_percentage: MyString

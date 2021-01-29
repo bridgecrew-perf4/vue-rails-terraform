@@ -1,0 +1,16 @@
+title: MealRecord
+type: object
+properties:
+  id:
+    type: integer
+    description: 食事レコードID
+  meal_id:
+    type: integer
+    description: 食事メニューID
+  meal_time:
+    type: string
+    description: 食事時刻
+  quantity:
+    type: string
+    description: 食事個数
+

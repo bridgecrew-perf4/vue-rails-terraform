@@ -1,0 +1,400 @@
+openapi: 3.0.0
+info:
+  title: user
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  '/users/{user_id}':
+    parameters:
+      - schema:
+          type: string
+        name: user_id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./Users.v1.yaml
+      operationId: get-users-id
+      description: ''
+    delete:
+      summary: ''
+      operationId: delete-users-user_id
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: ''
+      operationId: put-users-user_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./Users.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./Users.v1.yaml
+        description: ''
+  /users:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ./Users.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    - id: 115
+                      name: name
+                      email: email
+                      age: 11
+                    - id: 116
+                      name: name116
+                      email: email117
+                      age: 11
+      operationId: get-usesrs
+    parameters: []
+    post:
+      summary: ''
+      operationId: post-users
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./Users.v1.yaml
+  '/exercises/{exercise_id}':
+    parameters:
+      - schema:
+          type: string
+        name: exercise_id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./Exercise.v1.yaml
+      operationId: get-exercise-exercise_id
+      description: ''
+    put:
+      summary: ''
+      operationId: put-exercises-exercise_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./Exercise.v1.yaml
+    delete:
+      summary: ''
+      operationId: delete-exercises-exercise_id
+      responses:
+        '200':
+          description: OK
+  /exercises:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ./Exercise.v1.yaml
+      operationId: get-exercises
+    post:
+      summary: ''
+      operationId: post-exercises
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./Exercise.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./Exercise.v1.yaml
+  '/exercise_records/{exercise_record_id}':
+    parameters:
+      - schema:
+          type: string
+        name: exercise_record_id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-exercise_record-exercise_record_id
+    put:
+      summary: ''
+      operationId: put-exercise_records-exercise_record_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./ExerciseRecord.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./ExerciseRecord.v1.yaml
+    delete:
+      summary: ''
+      operationId: delete-exercise_records-exercise_record_id
+      responses:
+        '200':
+          description: OK
+  /exercise_records/:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ./ExerciseRecord.v1.yaml
+      operationId: get-exercise_records
+    post:
+      summary: ''
+      operationId: post-exercise_records
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./ExerciseRecord.v1.yaml
+  '/meals/{meal_id}':
+    parameters:
+      - schema:
+          type: string
+        name: meal_id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./Meal.v1.yaml
+      operationId: get-meals-meal_id
+    put:
+      summary: ''
+      operationId: put-meals-meal_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./Meal.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./Meal.v1.yaml
+    delete:
+      summary: ''
+      operationId: delete-meals-meal_id
+      responses:
+        '200':
+          description: OK
+  /meals:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ./Meal.v1.yaml
+      operationId: get-meals
+    post:
+      summary: ''
+      operationId: post-meals
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./Meal.v1.yaml
+  '/meal_records/{meal_record_id}':
+    parameters:
+      - schema:
+          type: string
+        name: meal_record_id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./MealRecord.v1.yaml
+      operationId: get-meal_records-meal_record_id
+    put:
+      summary: ''
+      operationId: put-meal_records-meal_record_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./MealRecord.v1.yaml
+    delete:
+      summary: ''
+      operationId: delete-meal_records-meal_record_id
+      responses:
+        '200':
+          description: OK
+  /meal_records:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ./MealRecord.v1.yaml
+      operationId: get-meal_records
+    post:
+      summary: ''
+      operationId: post-meal_records
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./MealRecord.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./MealRecord.v1.yaml
+  '/weights/{weight_id}':
+    parameters:
+      - schema:
+          type: string
+        name: weight_id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./Weight.v1.yaml
+      operationId: get-weights-weight_id
+    put:
+      summary: ''
+      operationId: put-weights-weight_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./Weight.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./Weight.v1.yaml
+    delete:
+      summary: ''
+      operationId: delete-weights-weight_id
+      responses:
+        '200':
+          description: OK
+  /weights:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./Weight.v1.yaml
+      operationId: get-weights
+    post:
+      summary: ''
+      operationId: post-weights
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./Weight.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./Weight.v1.yaml
+components:
+  schemas: {}

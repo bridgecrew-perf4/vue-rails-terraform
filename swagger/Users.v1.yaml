@@ -1,0 +1,15 @@
+title: Users
+type: object
+properties:
+  id:
+    type: string
+    description: ユーザーID
+  name:
+    type: string
+    description: 名前
+  email:
+    type: string
+    description: メールアドレス
+  age:
+    type: integer
+    description: 年齢
