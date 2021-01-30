@@ -4,8 +4,11 @@ migrate:
 rollback:
 	docker-compose run web rails db:rollback
 
+migratereset:
+	docker-compose run web rails db:migrate:reset
+
 seed:
 	docker-compose run web rails db:seed
 
-reset:
+seedreset:
 	docker-compose run web rails db:reset
