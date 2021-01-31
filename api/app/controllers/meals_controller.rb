@@ -1,51 +1,51 @@
-class UsersController < ApplicationController
-  # POST users
+class MealsController < ApplicationController
+  # POST meals
   def create
-    @user = User.new(user_params)
-    if @user.save
-      render json: { status: 'success', data: @user }
+    meal = Meal.new(meal_params)
+    if meal.save
+      render json: { status: 'success', data: meal }
     else
-      render json: { status: 'error', data: @user.errors }
+      render json: { status: 'error', data: meal.errors }
     end
   end
 
-  # GET users/:id
+  # GET meals
   def index
-    @users = User.all
-    render json: @users
+    meals = Meal.preload(:meal_menu)
+    render json: meals, each_serializer: MealSerializer
   end
 
-  # GET users
+  # GET meals/:id
   def show
-    @user = User.find(params[:id])
-    render json: @user
+    meal = Meal.find(params[:id])
+    render json: meal
   end
 
-  # PUT users/:id
+  # PUT meals/:id
   def update
-    @user = User.find(params[:id])
+    meal = Meal.find(params[:id])
 
-    if @user.update(user_params)
-      render json: { status: 'success', data: @user }
+    if meal.update(meal_params)
+      render json: { status: 'success', data: meal }
     else
-      render json: { status: 'error', data: @user.errors }
+      render json: { status: 'error', data: meal.errors }
     end
   end
 
-  # DELETE users/:id
+  # DELETE meals/:id
   def destroy
-    @user = User.find(params[:id])
+    meal = Meal.find(params[:id])
 
-    if @user.destroy
+    if meal.destroy
       render json: { status: 'success' }
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: meal.errors, status: :unprocessable_entity
     end
   end
 
   private
-  def user_params
-    params.require(:user).permit(:name, :email, :age)
+  def meal_params
+    params.require(:meal).permit(:meal_menu_id, :meal_time, :quantity)
   end
 
 end

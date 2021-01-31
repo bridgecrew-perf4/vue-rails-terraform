@@ -1,45 +1,45 @@
 class UsersController < ApplicationController
   # POST users
   def create
-    @user = User.new(user_params)
-    if @user.save
-      render json: { status: 'success', data: @user }
+    user = User.new(user_params)
+    if user.save
+      render json: { status: 'success', data: user }
     else
-      render json: { status: 'error', data: @user.errors }
+      render json: { status: 'error', data: user.errors }
     end
   end
 
-  # GET users/:id
+  # GET users
   def index
-    @users = User.all
-    render json: @users
+    users = User.all
+    render json: users
   end
 
-  # GET users
+  # GET users/:id
   def show
-    @user = User.find(params[:id])
-    render json: @user
+    user = User.find(params[:id])
+    render json: user
   end
 
   # PUT users/:id
   def update
-    @user = User.find(params[:id])
+    user = User.find(params[:id])
 
-    if @user.update(user_params)
-      render json: { status: 'success', data: @user }
+    if user.update(user_params)
+      render json: { status: 'success', data: user }
     else
-      render json: { status: 'error', data: @user.errors }
+      render json: { status: 'error', data: user.errors }
     end
   end
 
   # DELETE users/:id
   def destroy
-    @user = User.find(params[:id])
+    user = User.find(params[:id])
 
-    if @user.destroy
+    if user.destroy
       render json: { status: 'success' }
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: user.errors, status: :unprocessable_entity
     end
   end
 

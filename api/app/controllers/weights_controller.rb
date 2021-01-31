@@ -1,51 +1,51 @@
-class UsersController < ApplicationController
-  # POST users
+class WeightsController < ApplicationController
+  # POST weights
   def create
-    @user = User.new(user_params)
-    if @user.save
-      render json: { status: 'success', data: @user }
+    weight = Weight.new(weight_params)
+    if weight.save
+      render json: { status: 'success', data: weight }
     else
-      render json: { status: 'error', data: @user.errors }
+      render json: { status: 'error', data: weight.errors }
     end
   end
 
-  # GET users/:id
+  # GET weights
   def index
-    @users = User.all
-    render json: @users
+    weights = Weight.all
+    render json: weights
   end
 
-  # GET users
+  # GET weights/:id
   def show
-    @user = User.find(params[:id])
-    render json: @user
+    weight = Weight.find(params[:id])
+    render json: weight
   end
 
-  # PUT users/:id
+  # PUT weights/:id
   def update
-    @user = User.find(params[:id])
+    weight = Weight.find(params[:id])
 
-    if @user.update(user_params)
-      render json: { status: 'success', data: @user }
+    if weight.update(weight_params)
+      render json: { status: 'success', data: weight }
     else
-      render json: { status: 'error', data: @user.errors }
+      render json: { status: 'error', data: weight.errors }
     end
   end
 
-  # DELETE users/:id
+  # DELETE weights/:id
   def destroy
-    @user = User.find(params[:id])
+    weight = Weight.find(params[:id])
 
-    if @user.destroy
+    if weight.destroy
       render json: { status: 'success' }
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: weight.errors, status: :unprocessable_entity
     end
   end
 
   private
-  def user_params
-    params.require(:user).permit(:name, :email, :age)
+  def weight_params
+    params.require(:weight).permit(:value, :body_fat_percentage, :measurement_time)
   end
 
 end

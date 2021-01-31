@@ -1,51 +1,51 @@
-class UsersController < ApplicationController
-  # POST users
+class ExercisesController < ApplicationController
+  # POST exercises
   def create
-    @user = User.new(user_params)
-    if @user.save
-      render json: { status: 'success', data: @user }
+    exercise = Exercise.new(exercise_params)
+    if exercise.save
+      render json: { status: 'success', data: exercise }
     else
-      render json: { status: 'error', data: @user.errors }
+      render json: { status: 'error', data: exercise.errors }
     end
   end
 
-  # GET users/:id
+  # GET exercises
   def index
-    @users = User.all
-    render json: @users
+    exercises = Exercise.preload(:exercise_menu)
+    render json: exercises, each_serializer: ExerciseSerializer
   end
 
-  # GET users
+  # GET exercises/:id
   def show
-    @user = User.find(params[:id])
-    render json: @user
+    exercise = Exercise.find(params[:id])
+    render json: exercise, each_serializer: ExerciseSerializer
   end
 
-  # PUT users/:id
+  # PUT exercises/:id
   def update
-    @user = User.find(params[:id])
+    exercise = Exercise.find(params[:id])
 
-    if @user.update(user_params)
-      render json: { status: 'success', data: @user }
+    if exercise.update(exercise_params)
+      render json: { status: 'success', data: exercise }
     else
-      render json: { status: 'error', data: @user.errors }
+      render json: { status: 'error', data: exercise.errors }
     end
   end
 
-  # DELETE users/:id
+  # DELETE exercises/:id
   def destroy
-    @user = User.find(params[:id])
+    exercise = Exercise.find(params[:id])
 
-    if @user.destroy
+    if exercise.destroy
       render json: { status: 'success' }
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: exercise.errors, status: :unprocessable_entity
     end
   end
 
   private
-  def user_params
-    params.require(:user).permit(:name, :email, :age)
+  def exercise_params
+    params.require(:exercise).permit(:exercise_menu_id, :number, :set, :time, :distance)
   end
 
 end
