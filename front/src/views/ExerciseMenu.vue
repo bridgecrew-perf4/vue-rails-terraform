@@ -2,7 +2,7 @@
   <v-container text-xs-center>
     <v-layout row wrap justify-center>
       <v-flex xs12 class="text-center">
-        <h1>ユーザー編集</h1>
+        <h1>運動メニュー編集</h1>
       </v-flex>
 
       <v-flex xs5 mt-5>
@@ -10,25 +10,17 @@
           <v-card-text>
             <v-form>
               <v-text-field
-                v-model="user.name"
-                :rules="[() => !!name || 'This field is required']"
-                label="名前"
+                v-model="exercise_menu.name"
+                label="メニュー"
                 required
               ></v-text-field>
               <v-text-field
-                v-model="user.email"
-                :rules="emailRules"
-                label="メールアドレス"
-                required
-              ></v-text-field>
-              <v-text-field
-                v-model="user.age"
-                label="年齢"
-                :rules="[() => !!age || 'This field is required']"
+                v-model="exercise_menu.calorie"
+                label="カロリー"
                 required
               ></v-text-field>
               <div class="text-center">
-                <v-btn @click="$router.push({ name: 'users' })"
+                <v-btn @click="$router.push({ name: 'exerciseMenus' })"
                   >キャンセル</v-btn
                 >
                 <v-btn color="info" class="ml-2" @click="update">保存</v-btn>
@@ -45,34 +37,33 @@
 export default {
   data() {
     return {
-      user: []
+      exercise_menu: []
     };
   },
   mounted() {
     this.axios
       .get(
-        `http://localhost:3000/users/${this.$route.params["id"]}`,
-        this.user[0]
+        `http://localhost:3000/exercise_menus/${this.$route.params["id"]}`,
+        this.exercise_menu[0]
       )
-      .then(response => (this.user = response.data));
+      .then(response => (this.exercise_menu = response.data));
   },
   methods: {
     update() {
       const params = {
-        name: this.user.name,
-        email: this.user.email,
-        age: this.user.age
+        name: this.exercise_menu.name,
+        calorie: this.exercise_menu.calorie
       };
       if (this.$route.params.id) {
         this.axios.put(
-          `http://localhost:3000/users/${this.$route.params["id"]}`,
+          `http://localhost:3000/exercise_menus/${this.$route.params["id"]}`,
           params
         );
-        alert("ユーザー情報を更新しました");
+        alert("運動メニュー情報を更新しました");
       } else {
         alert("通信が失敗しました");
       }
-      this.$router.push({ name: "users" });
+      this.$router.push({ name: "exerciseMenus" });
     }
   }
 };

@@ -2,11 +2,11 @@
   <v-container text-xs-center justify-center>
     <v-layout row wrap>
       <v-flex xs12>
-        <h1>ユーザーリスト</h1>
+        <h1>食品リスト</h1>
       </v-flex>
 
       <v-flex xs12 mt-5 mr-5 text-right>
-        <router-link :to="{ name: 'userCreate' }">
+        <router-link :to="{ name: 'mealMenuCreate' }">
           <v-btn color="info">
             新規登録
           </v-btn>
@@ -14,9 +14,9 @@
       </v-flex>
 
       <v-flex xs12 mt-3 justify-center>
-        <v-data-table :headers="headers" :items="users">
+        <v-data-table :headers="headers" :items="mealMenus">
           <template v-slot:[`item.action`]="{ item }">
-            <router-link :to="{ name: 'user', params: { id: item.id } }">
+            <router-link :to="{ name: 'mealMenu', params: { id: item.id } }">
               <v-icon small class="mr-2">mdi-pencil</v-icon>
             </router-link>
             <v-icon small class="mr-2" @click="deleteUser(item.id)"
@@ -35,23 +35,25 @@ export default {
     return {
       headers: [
         { text: "ID", value: "id" },
-        { text: "名前", value: "name" },
-        { text: "メールアドレス", value: "email" },
-        { text: "年齢", value: "age" },
+        { text: "メニュー", value: "name" },
+        { text: "カロリー", value: "calorie" },
+        { text: "炭水化物", value: "carbohydrate" },
+        { text: "タンパク質", value: "protein" },
+        { text: "脂質", value: "lipid" },
         { text: "操作", value: "action", sortable: false }
       ],
-      users: []
+      mealMenus: []
     };
   },
   mounted() {
     this.axios
-      .get("http://localhost:3000/users")
-      .then(response => (this.users = response.data));
+      .get("http://localhost:3000/meal_menus")
+      .then(response => (this.mealMenus = response.data));
   },
   methods: {
     deleteUser(id) {
       if (confirm("削除してよろしいですか？")) {
-        this.axios.delete(`http://localhost:3000/users/${id}`);
+        this.axios.delete(`http://localhost:3000/meal_menus/${id}`);
         location.reload(); // storeに置き換える
       }
     }

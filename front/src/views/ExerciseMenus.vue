@@ -2,11 +2,11 @@
   <v-container text-xs-center justify-center>
     <v-layout row wrap>
       <v-flex xs12>
-        <h1>ユーザーリスト</h1>
+        <h1>運動メニュー</h1>
       </v-flex>
 
       <v-flex xs12 mt-5 mr-5 text-right>
-        <router-link :to="{ name: 'userCreate' }">
+        <router-link :to="{ name: 'exercise_menuCreate' }">
           <v-btn color="info">
             新規登録
           </v-btn>
@@ -14,12 +14,14 @@
       </v-flex>
 
       <v-flex xs12 mt-3 justify-center>
-        <v-data-table :headers="headers" :items="users">
+        <v-data-table :headers="headers" :items="exercise_menus">
           <template v-slot:[`item.action`]="{ item }">
-            <router-link :to="{ name: 'user', params: { id: item.id } }">
+            <router-link
+              :to="{ name: 'exerciseMenu', params: { id: item.id } }"
+            >
               <v-icon small class="mr-2">mdi-pencil</v-icon>
             </router-link>
-            <v-icon small class="mr-2" @click="deleteUser(item.id)"
+            <v-icon small class="mr-2" @click="deleteExerciseMenu(item.id)"
               >mdi-delete</v-icon
             >
           </template>
@@ -36,22 +38,21 @@ export default {
       headers: [
         { text: "ID", value: "id" },
         { text: "名前", value: "name" },
-        { text: "メールアドレス", value: "email" },
-        { text: "年齢", value: "age" },
+        { text: "カロリー", value: "calorie" },
         { text: "操作", value: "action", sortable: false }
       ],
-      users: []
+      exercise_menus: []
     };
   },
   mounted() {
     this.axios
-      .get("http://localhost:3000/users")
-      .then(response => (this.users = response.data));
+      .get("http://localhost:3000/exercise_menus")
+      .then(response => (this.exercise_menus = response.data));
   },
   methods: {
-    deleteUser(id) {
+    deleteExerciseMenu(id) {
       if (confirm("削除してよろしいですか？")) {
-        this.axios.delete(`http://localhost:3000/users/${id}`);
+        this.axios.delete(`http://localhost:3000/exercise_menus/${id}`);
         location.reload(); // storeに置き換える
       }
     }

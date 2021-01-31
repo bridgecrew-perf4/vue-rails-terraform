@@ -2,33 +2,27 @@
   <v-container text-xs-center>
     <v-layout row wrap justify-center>
       <v-flex xs12 class="text-center">
-        <h1>ユーザー編集</h1>
+        <h1>食事編集</h1>
       </v-flex>
 
       <v-flex xs5 mt-5>
         <v-card>
           <v-card-text>
             <v-form>
+              <v-text-field v-model="meal.meal_menu_id" required>
+              </v-text-field>
               <v-text-field
-                v-model="user.name"
-                :rules="[() => !!name || 'This field is required']"
-                label="名前"
+                v-model="meal.quantity"
+                label="数量"
                 required
               ></v-text-field>
               <v-text-field
-                v-model="user.email"
-                :rules="emailRules"
-                label="メールアドレス"
-                required
-              ></v-text-field>
-              <v-text-field
-                v-model="user.age"
-                label="年齢"
-                :rules="[() => !!age || 'This field is required']"
+                v-model="meal.meal_time"
+                label="食事時間"
                 required
               ></v-text-field>
               <div class="text-center">
-                <v-btn @click="$router.push({ name: 'users' })"
+                <v-btn @click="$router.push({ name: 'meals' })"
                   >キャンセル</v-btn
                 >
                 <v-btn color="info" class="ml-2" @click="update">保存</v-btn>
@@ -45,34 +39,34 @@
 export default {
   data() {
     return {
-      user: []
+      meal: []
     };
   },
   mounted() {
     this.axios
       .get(
-        `http://localhost:3000/users/${this.$route.params["id"]}`,
-        this.user[0]
+        `http://localhost:3000/meals/${this.$route.params["id"]}`,
+        this.meal[0]
       )
-      .then(response => (this.user = response.data));
+      .then(response => (this.meal = response.data));
   },
   methods: {
     update() {
       const params = {
-        name: this.user.name,
-        email: this.user.email,
-        age: this.user.age
+        meal_menu_id: this.meal.meal_menu_id,
+        quantity: this.meal.quantity,
+        meal_time: this.meal.meal_time
       };
       if (this.$route.params.id) {
         this.axios.put(
-          `http://localhost:3000/users/${this.$route.params["id"]}`,
+          `http://localhost:3000/meals/${this.$route.params["id"]}`,
           params
         );
-        alert("ユーザー情報を更新しました");
+        alert("食事情報を更新しました");
       } else {
         alert("通信が失敗しました");
       }
-      this.$router.push({ name: "users" });
+      this.$router.push({ name: "meals" });
     }
   }
 };
