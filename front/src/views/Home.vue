@@ -140,7 +140,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import firebase from "firebase/app";
 // import About from "../components/About";
 
