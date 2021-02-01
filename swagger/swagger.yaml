@@ -147,40 +147,46 @@ paths:
           application/json:
             schema:
               $ref: ./Exercise.v1.yaml
-  '/exercise_records/{exercise_record_id}':
+  '/exercise_menus/{exercise_menu_id}':
     parameters:
       - schema:
           type: string
-        name: exercise_record_id
+        name: exercise_menu_id
         in: path
         required: true
     get:
       summary: Your GET endpoint
       tags: []
-      responses: {}
-      operationId: get-exercise_record-exercise_record_id
-    put:
-      summary: ''
-      operationId: put-exercise_records-exercise_record_id
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: ./ExerciseRecord.v1.yaml
+                $ref: ./ExerciseMenul.v1.yaml
+      operationId: get-exercise_menu-exercise_menu_id
+    put:
+      summary: ''
+      operationId: put-exercise_menus-exercise_menu_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./ExerciseMenul.v1.yaml
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ./ExerciseRecord.v1.yaml
+              $ref: ./ExerciseMenul.v1.yaml
     delete:
       summary: ''
-      operationId: delete-exercise_records-exercise_record_id
+      operationId: delete-exercise_menus-exercise_menu_id
       responses:
         '200':
           description: OK
-  /exercise_records/:
+  /exercise_menus/:
     get:
       summary: Your GET endpoint
       tags: []
@@ -192,18 +198,20 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: ./ExerciseRecord.v1.yaml
-      operationId: get-exercise_records
+                  $ref: ./ExerciseMenul.v1.yaml
+      operationId: get-exercise_menus
+      description: ''
     post:
       summary: ''
-      operationId: post-exercise_records
+      operationId: post-exercise_menus
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: ./ExerciseRecord.v1.yaml
+                $ref: ./ExerciseMenul.v1.yaml
+    parameters: []
   '/meals/{meal_id}':
     parameters:
       - schema:
@@ -267,11 +275,11 @@ paths:
             application/json:
               schema:
                 $ref: ./Meal.v1.yaml
-  '/meal_records/{meal_record_id}':
+  '/meal_menus/{meal_menu_id}':
     parameters:
       - schema:
           type: string
-        name: meal_record_id
+        name: meal_menu_id
         in: path
         required: true
     get:
@@ -283,25 +291,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./MealRecord.v1.yaml
-      operationId: get-meal_records-meal_record_id
+                $ref: ./ExerciseMenul.v1.yaml
+      operationId: get-meal_menus-meal_menu_id
     put:
       summary: ''
-      operationId: put-meal_records-meal_record_id
+      operationId: put-meal_menus-meal_menu_id
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: ./MealRecord.v1.yaml
+                $ref: ./ExerciseMenul.v1.yaml
     delete:
       summary: ''
-      operationId: delete-meal_records-meal_record_id
+      operationId: delete-meal_menus-meal_menu_id
       responses:
         '200':
           description: OK
-  /meal_records:
+  /meal_menus:
     get:
       summary: Your GET endpoint
       tags: []
@@ -313,23 +321,23 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: ./MealRecord.v1.yaml
-      operationId: get-meal_records
+                  $ref: ./ExerciseMenul.v1.yaml
+      operationId: get-meal_menus
     post:
       summary: ''
-      operationId: post-meal_records
+      operationId: post-meal_menus
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: ./MealRecord.v1.yaml
+                $ref: ./MealMenu.v1.yaml
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ./MealRecord.v1.yaml
+              $ref: ./MealMenu.v1.yaml
   '/weights/{weight_id}':
     parameters:
       - schema:

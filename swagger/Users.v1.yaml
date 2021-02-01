@@ -4,12 +4,9 @@ properties:
   id:
     type: string
     description: ユーザーID
-  name:
-    type: string
+  target_weight:
     description: 名前
-  email:
-    type: string
-    description: メールアドレス
-  age:
-    type: integer
-    description: 年齢
+    format: float
+    type: number
+  target_body_fat:
+    type: number
