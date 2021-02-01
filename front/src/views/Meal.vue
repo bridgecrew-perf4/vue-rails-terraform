@@ -17,7 +17,7 @@
                 required
               ></v-text-field>
               <v-text-field
-                v-model="meal.meal_time"
+                v-model="meal.eat_time"
                 label="食事時間"
                 required
               ></v-text-field>
@@ -55,7 +55,7 @@ export default {
       const params = {
         meal_menu_id: this.meal.meal_menu_id,
         quantity: this.meal.quantity,
-        meal_time: this.meal.meal_time
+        eat_time: this.meal.eat_time
       };
       if (this.$route.params.id) {
         this.axios.put(

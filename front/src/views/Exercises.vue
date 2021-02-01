@@ -35,11 +35,13 @@ export default {
     return {
       headers: [
         { text: "ID", value: "id" },
+        { text: "日付", value: "exercise_time" },
         { text: "メニュー", value: "exercise_menu.name" },
         { text: "回数", value: "number" },
         { text: "セット数", value: "set" },
         { text: "時間", value: "time" },
         { text: "距離", value: "distance" },
+        { text: "実施時間", value: "exercise_time" },
         { text: "操作", value: "action", sortable: false }
       ],
       exercises: []

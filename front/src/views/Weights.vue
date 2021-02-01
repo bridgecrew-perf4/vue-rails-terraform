@@ -35,8 +35,9 @@ export default {
     return {
       headers: [
         { text: "ID", value: "id" },
+        { text: "日付", value: "measurement_time" },
         { text: "体重(kg)", value: "value" },
-        { text: "体脂肪率(%)", value: "body_fat_percentage" },
+        { text: "体脂肪率(%)", value: "body_fat" },
         { text: "計測時刻", value: "measurement_time" },
         { text: "操作", value: "action", sortable: false }
       ],

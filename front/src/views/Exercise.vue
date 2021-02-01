@@ -33,6 +33,11 @@
                 label="距離"
                 required
               ></v-text-field>
+              <v-text-field
+                v-model="exercise.exercise_time"
+                label="実施時間"
+                required
+              ></v-text-field>
               <div class="text-center">
                 <v-btn @click="$router.push({ name: 'exercises' })"
                   >キャンセル</v-btn
@@ -69,7 +74,8 @@ export default {
         number: this.exercise.number,
         set: this.exercise.set,
         time: this.exercise.time,
-        distance: this.exercise.distance
+        distance: this.exercise.distance,
+        exercise_time: this.exercise.exercise_time
       };
       if (this.$route.params.id) {
         this.axios.put(

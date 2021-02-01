@@ -35,9 +35,8 @@ export default {
     return {
       headers: [
         { text: "ID", value: "id" },
-        { text: "名前", value: "name" },
-        { text: "メールアドレス", value: "email" },
-        { text: "年齢", value: "age" },
+        { text: "目標体重", value: "target_weight" },
+        { text: "目標体脂肪率", value: "target_body_fat" },
         { text: "操作", value: "action", sortable: false }
       ],
       users: []

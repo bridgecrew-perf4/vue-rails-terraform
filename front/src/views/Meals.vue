@@ -35,11 +35,12 @@ export default {
     return {
       headers: [
         { text: "ID", value: "id" },
+        { text: "日付", value: "eat_time" },
         { text: "名前", value: "meal_menu.name" },
         { text: "数量", value: "quantity" },
         { text: "カロリー", value: "meal_menu.calorie" },
         { text: "タンパク質", value: "meal_menu.protein" },
-        { text: "食事時刻", value: "meal_time" },
+        { text: "食事時刻", value: "eat_time" },
         { text: "操作", value: "action", sortable: false }
       ],
       meals: []

@@ -10,21 +10,13 @@
           <v-card-text>
             <v-form>
               <v-text-field
-                v-model="user.name"
-                :rules="[() => !!name || 'This field is required']"
-                label="名前"
+                v-model="user.target_weight"
+                label="目標体重"
                 required
               ></v-text-field>
               <v-text-field
-                v-model="user.email"
-                :rules="emailRules"
-                label="メールアドレス"
-                required
-              ></v-text-field>
-              <v-text-field
-                v-model="user.age"
-                label="年齢"
-                :rules="[() => !!age || 'This field is required']"
+                v-model="user.target_body_fat"
+                label="目標体脂肪率(%)"
                 required
               ></v-text-field>
               <div class="text-center">

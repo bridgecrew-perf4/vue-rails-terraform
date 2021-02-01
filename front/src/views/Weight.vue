@@ -15,7 +15,7 @@
                 required
               ></v-text-field>
               <v-text-field
-                v-model="weight.body_fat_percentage"
+                v-model="weight.body_fat"
                 label="体脂肪率"
                 required
               ></v-text-field>

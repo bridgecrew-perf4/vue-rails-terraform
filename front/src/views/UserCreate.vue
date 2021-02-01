@@ -18,12 +18,12 @@
               <v-text-field
                 v-model="user.email"
                 :rules="[() => !!address || 'This field is required']"
-                label="メールアドレス"
+                label="目標体重"
                 required
               ></v-text-field>
               <v-text-field
                 v-model="user.age"
-                label="年齢"
+                label="目標体脂肪率(%)"
                 :rules="[() => !!age || 'This field is required']"
                 required
               ></v-text-field>
