@@ -45,7 +45,7 @@ class WeightsController < ApplicationController
 
   private
   def weight_params
-    params.require(:weight).permit(:value, :body_fat_percentage, :measurement_time)
+    params.require(:weight).permit(:value, :body_fat, :measurement_time)
   end
 
 end
