@@ -11,8 +11,8 @@ class ExerciseMenusController < ApplicationController
 
   # GET exercise_menus
   def index
-    exercise_menus = ExerciseMenu.all
-    
+    user = User.find_by(account_id: params[:user_id])
+    exercise_menus = ExerciseMenu.all.where(user_id: user.id)
     render json: exercise_menus, each_serializer: ExerciseMenuSerializer
   end
 

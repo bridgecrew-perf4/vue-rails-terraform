@@ -11,13 +11,15 @@ class MealsController < ApplicationController
 
   # GET meals
   def index
-    meals = Meal.preload(:meal_menu)
+    user = User.find_by(account_id: params[:user_id])
+    meals = Meal.preload(:meal_menu).where(user_id: user.id)
     render json: meals, each_serializer: MealSerializer
   end
 
   # GET meals/:id
   def show
-    meal = Meal.find(params[:id])
+    user = User.find_by(account_id: params[:user_id])
+    meal = Meal.where(id: params[:id], user_id: user.id)
     render json: meal
   end
 

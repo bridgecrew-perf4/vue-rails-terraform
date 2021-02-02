@@ -11,13 +11,15 @@ class ExercisesController < ApplicationController
 
   # GET exercises
   def index
-    exercises = Exercise.preload(:exercise_menu)
+    user = User.find_by(account_id: params[:user_id])
+    exercises = Exercise.preload(:exercise_menu).where(user_id: user.id)
     render json: exercises, each_serializer: ExerciseSerializer
   end
 
   # GET exercises/:id
   def show
-    exercise = Exercise.find(params[:id])
+    user = User.find_by(account_id: params[:user_id])
+    exercise = Exercise.where(id: params[:id], user_id: user.id)
     render json: exercise, each_serializer: ExerciseSerializer
   end
 
