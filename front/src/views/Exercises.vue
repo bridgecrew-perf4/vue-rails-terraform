@@ -1,38 +1,26 @@
 <template>
-  <v-container text-xs-center justify-center>
-    <v-layout row wrap>
-      <v-flex xs12>
-        <h1>運動ログ</h1>
-      </v-flex>
-
-      <v-flex xs12 mt-5 mr-5 text-right>
-        <router-link :to="{ name: 'exerciseCreate' }">
-          <v-btn color="info">
-            新規登録
-          </v-btn>
-        </router-link>
-      </v-flex>
-
-      <v-flex xs12 mt-3 justify-center>
-        <v-data-table :headers="headers" :items="exercises">
-          <template v-slot:[`item.action`]="{ item }">
-            <router-link :to="{ name: 'exercise', params: { id: item.id } }">
-              <v-icon small class="mr-2">mdi-pencil</v-icon>
-            </router-link>
-            <v-icon small class="mr-2" @click="deleteExercise(item.id)"
-              >mdi-delete</v-icon
-            >
-          </template>
-        </v-data-table>
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <LogList
+    :table="table"
+    :title="title"
+    :createPage="createPage"
+    :editPage="editPage"
+    :headers="headers"
+    :records="records"
+  />
 </template>
 
 <script lang="ts">
+import LogList from "../components/organisms/LogList.vue";
 export default {
+  components: {
+    LogList
+  },
   data() {
     return {
+      table: "exercise",
+      title: "運動ログ",
+      createPage: "exerciseCreate",
+      editPage: "exercise",
       headers: [
         { text: "ID", value: "id" },
         { text: "日付", value: "exercise_time" },
@@ -44,21 +32,14 @@ export default {
         { text: "実施時間", value: "exercise_time" },
         { text: "操作", value: "action", sortable: false }
       ],
-      exercises: []
+      records: []
     };
   },
-  mounted() {
+  created() {
+    const uid = "fyx2WUXkwQNk0KD8rryV3bKH4F53";
     this.axios
-      .get("http://localhost:3000/exercises")
-      .then(response => (this.exercises = response.data));
-  },
-  methods: {
-    deleteExercise(id) {
-      if (confirm("削除してよろしいですか？")) {
-        this.axios.delete(`http://localhost:3000/exercises/${id}`);
-        location.reload(); // storeに置き換える
-      }
-    }
+      .get(`http://localhost:3000/users/${uid}/exercises`)
+      .then(response => (this.records = response.data));
   }
 };
 </script>

@@ -1,67 +1,40 @@
 <template>
-  <v-container text-xs-center justify-center>
-    <v-layout row wrap>
-      <v-flex xs12>
-        <h1>運動メニュー</h1>
-      </v-flex>
-
-      <v-flex xs12 mt-5 mr-5 text-right>
-        <router-link :to="{ name: 'exercise_menuCreate' }">
-          <v-btn color="info">
-            新規登録
-          </v-btn>
-        </router-link>
-      </v-flex>
-
-      <v-flex xs12 mt-3 justify-center>
-        <v-data-table :headers="headers" :items="exercise_menus">
-          <template v-slot:[`item.action`]="{ item }">
-            <router-link
-              :to="{ name: 'exerciseMenu', params: { id: item.id } }"
-            >
-              <v-icon small class="mr-2">mdi-pencil</v-icon>
-            </router-link>
-            <v-icon small class="mr-2" @click="deleteExerciseMenu(item.id)"
-              >mdi-delete</v-icon
-            >
-          </template>
-        </v-data-table>
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <LogList
+    :table="table"
+    :title="title"
+    :createPage="createPage"
+    :editPage="editPage"
+    :headers="headers"
+    :records="records"
+  />
 </template>
 
 <script lang="ts">
+import LogList from "../components/organisms/LogList.vue";
 export default {
+  components: {
+    LogList
+  },
   data() {
     return {
+      table: "exerciseMenu",
+      title: "運動メニュー",
+      createPage: "exerciseMenuCreate",
+      editPage: "exerciseMenu",
       headers: [
         { text: "ID", value: "id" },
         { text: "名前", value: "name" },
         { text: "カロリー", value: "calorie" },
         { text: "操作", value: "action", sortable: false }
       ],
-      exercise_menus: []
+      records: []
     };
   },
-  mounted() {
+  created() {
+    const uid = "fyx2WUXkwQNk0KD8rryV3bKH4F53";
     this.axios
-      .get("http://localhost:3000/exercise_menus")
-      .then(response => (this.exercise_menus = response.data));
-  },
-  methods: {
-    deleteExerciseMenu(id) {
-      if (confirm("削除してよろしいですか？")) {
-        this.axios.delete(`http://localhost:3000/exercise_menus/${id}`);
-        location.reload(); // storeに置き換える
-      }
-    }
+      .get(`http://localhost:3000/users/${uid}/exercise_menus`)
+      .then(response => (this.records = response.data));
   }
 };
 </script>
-
-<style scoped lang="scss">
-a {
-  text-decoration: none;
-}
-</style>
