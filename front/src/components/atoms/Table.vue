@@ -13,7 +13,7 @@
 
 <script lang="ts">
 export default {
-  props: ["editPage", "headers", "records"]
+  props: ["editPage", "headers", "records", "deleteRecord"]
 };
 </script>
 
