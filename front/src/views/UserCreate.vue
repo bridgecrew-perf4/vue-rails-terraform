@@ -1,64 +1,36 @@
 <template>
-  <v-container text-xs-center>
-    <v-layout row wrap justify-center>
-      <v-flex xs12 class="text-center">
-        <h1>ユーザー作成</h1>
-      </v-flex>
-
-      <v-flex xs5 mt-5>
-        <v-card>
-          <v-card-text>
-            <v-form>
-              <v-text-field
-                v-model="user.name"
-                :rules="[() => !!name || 'This field is required']"
-                label="名前"
-                required
-              ></v-text-field>
-              <v-text-field
-                v-model="user.email"
-                :rules="[() => !!address || 'This field is required']"
-                label="目標体重"
-                required
-              ></v-text-field>
-              <v-text-field
-                v-model="user.age"
-                label="目標体脂肪率(%)"
-                :rules="[() => !!age || 'This field is required']"
-                required
-              ></v-text-field>
-              <div class="text-center">
-                <v-btn @click="$router.push({ name: 'users' })"
-                  >キャンセル</v-btn
-                >
-                <v-btn color="info" class="ml-2" @click="create">作成</v-btn>
-              </div>
-            </v-form>
-          </v-card-text>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <CreateForm
+    :table="table"
+    :title="title"
+    :listPage="listPage"
+    :form="form"
+    :inputs="inputs"
+  />
 </template>
 
 <script lang="ts">
+import CreateForm from "../components/organisms/Form.vue";
 export default {
+  components: {
+    CreateForm
+  },
+
   data() {
     return {
-      user: []
+      table: "user",
+      title: "ユーザー作成",
+      listPage: "users",
+      form: {
+        name: "",
+        target_weight: "",
+        target_body_fat: ""
+      },
+      inputs: [
+        { label: "名前", model_value: "name" },
+        { label: "目標体重", model_value: "target_weight" },
+        { label: "目標体脂肪率(%)", model_value: "target_body_fat" }
+      ]
     };
-  },
-  methods: {
-    create() {
-      const params = {
-        name: this.user.name,
-        email: this.user.email,
-        age: this.user.age
-      };
-      this.axios.post(`http://localhost:3000/users`, params);
-      alert("ユーザー情報を作成しました");
-      this.$router.push({ name: "users" });
-    }
   }
 };
 </script>
