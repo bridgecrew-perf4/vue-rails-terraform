@@ -31,18 +31,8 @@ export default {
       ],
       records: []
     };
-  },
-  created() {
-    const uid = "fyx2WUXkwQNk0KD8rryV3bKH4F53";
-    this.axios
-      .get(`http://localhost:3000/users/${uid}/weights`)
-      .then(response => (this.records = response.data));
   }
 };
 </script>
 
-<style scoped lang="scss">
-a {
-  text-decoration: none;
-}
-</style>
+<style scoped lang="scss"></style>

@@ -29,12 +29,6 @@ export default {
       ],
       records: []
     };
-  },
-  created() {
-    const uid = "fyx2WUXkwQNk0KD8rryV3bKH4F53";
-    this.axios
-      .get(`http://localhost:3000/users/${uid}/exercise_menus`)
-      .then(response => (this.records = response.data));
   }
 };
 </script>
