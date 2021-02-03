@@ -1,5 +1,5 @@
 <template>
-  <CreateForm
+  <Form
     :table="table"
     :title="title"
     :listPage="listPage"
@@ -9,10 +9,10 @@
 </template>
 
 <script lang="ts">
-import CreateForm from "../components/organisms/Form.vue";
+import Form from "../components/organisms/Form.vue";
 export default {
   components: {
-    CreateForm
+    Form
   },
 
   data() {
