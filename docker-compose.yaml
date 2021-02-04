@@ -10,16 +10,18 @@ services:
       - db
     volumes:
       - ./api:/app
+      - bundle:/usr/local/bundle
     tty: true
     stdin_open: true
   db:
     image: mysql:5.7
-    volumes:
-      - mysql_data:/var/lib/mysql/
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=your_app_name_development
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
     ports:
-      - "3306:3306"
+      - "4306:3306"
   front:
     build: ./front
     volumes:

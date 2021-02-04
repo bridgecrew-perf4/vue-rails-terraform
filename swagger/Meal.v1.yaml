@@ -1,0 +1,17 @@
+title: Meal
+type: object
+properties:
+  id:
+    type: integer
+    description: 食事レコードID
+  meal_menu_id:
+    type: integer
+    description: 食事メニューID
+  eat_time:
+    type: string
+    description: 食事時刻
+  quantity:
+    type: string
+    description: 食事個数
+  meal_menul:
+    $ref: ./MealMenu.v1.yaml

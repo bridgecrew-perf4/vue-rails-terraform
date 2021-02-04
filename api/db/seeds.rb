@@ -1,7 +1,41 @@
-10.times do
-    User.create(
-       name: Faker::Name.name,
-       email: Faker::Internet.email,
-       age: rand(15..60)
-     )
-end
+
+ExerciseMenu.create(user_id: "1", name: "腕立て伏せ", calorie: 504)
+ExerciseMenu.create(user_id: "1", name: "腹筋", calorie: 504)
+ExerciseMenu.create(user_id: "1", name: "背筋", calorie: 504)
+ExerciseMenu.create(user_id: "1", name: "スクワット", calorie: 504)
+ExerciseMenu.create(user_id: "1", name: "懸垂", calorie: 504)
+ExerciseMenu.create(user_id: "1", name: "エアロバイク", calorie: 504)
+ExerciseMenu.create(user_id: "1", name: "ベンチプレス", calorie: 504)
+ExerciseMenu.create(user_id: "1", name: "デッドリフト", calorie: 504)
+
+Exercise.create(user_id: "1", exercise_time: '2021-02-01 12:34:56', exercise_menu_id: 1, number: rand(50..500), set:rand(1..5), time: '00:00:30', distance: rand(50..500))
+Exercise.create(user_id: "1", exercise_time: '2021-02-01 12:34:56', exercise_menu_id: 2, number: rand(50..500), set:rand(1..5), time: '00:00:30', distance: rand(50..500))
+Exercise.create(user_id: "1", exercise_time: '2021-02-01 12:34:56', exercise_menu_id: 3, number: rand(50..500), set:rand(1..5), time: '00:00:30', distance: rand(50..500))
+Exercise.create(user_id: "1", exercise_time: '2021-02-01 12:34:56', exercise_menu_id: 4, number: rand(50..500), set:rand(1..5), time: '00:00:30', distance: rand(50..500))
+Exercise.create(user_id: "2", exercise_time: '2021-02-01 12:34:56', exercise_menu_id: 5, number: rand(50..500), set:rand(1..5), time: '00:00:30', distance: rand(50..500))
+Exercise.create(user_id: "2", exercise_time: '2021-02-01 12:34:56', exercise_menu_id: 1, number: rand(50..500), set:rand(1..5), time: '00:00:30', distance: rand(50..500))
+Exercise.create(user_id: "3", exercise_time: '2021-02-01 12:34:56', exercise_menu_id: 2, number: rand(50..500), set:rand(1..5), time: '00:00:30', distance: rand(50..500))
+Exercise.create(user_id: "4", exercise_time: '2021-02-01 12:34:56', exercise_menu_id: 3, number: rand(50..500), set:rand(1..5), time: '00:00:30', distance: rand(50..500))
+Exercise.create(user_id: "5", exercise_time: '2021-02-01 12:34:56', exercise_menu_id: 4, number: rand(50..500), set:rand(1..5), time: '00:00:30', distance: rand(50..500))
+Exercise.create(user_id: "6", exercise_time: '2021-02-01 12:34:56', exercise_menu_id: 5, number: rand(50..500), set:rand(1..5), time: '00:00:30', distance: rand(50..500))
+
+MealMenu.create(user_id: "1", name: "納豆", calorie: 108, carbohydrate: 7.8, protein: 8.6, lipid: 4.7)
+MealMenu.create(user_id: "1", name: "鶏ささみ", calorie: 108, carbohydrate: 7.8, protein: 8.6, lipid: 4.7)
+MealMenu.create(user_id: "1", name: "鶏むね", calorie: 108, carbohydrate: 7.8, protein: 8.6, lipid: 4.7)
+MealMenu.create(user_id: "1", name: "鶏もも", calorie: 108, carbohydrate: 7.8, protein: 8.6, lipid: 4.7)
+MealMenu.create(user_id: "1", name: "プロテイン", calorie: 108, carbohydrate: 7.8, protein: 8.6, lipid: 4.7)
+
+Meal.create(user_id: "1", eat_time: '2021-02-01 12:34:56', meal_menu_id:1, quantity: 1)
+Meal.create(user_id: "1", eat_time: '2021-02-01 12:34:56', meal_menu_id:2, quantity: 2)
+Meal.create(user_id: "1", eat_time: '2021-02-01 12:34:56', meal_menu_id:3, quantity: 3)
+Meal.create(user_id: "1", eat_time: '2021-02-01 12:34:56', meal_menu_id:4, quantity: 4)
+Meal.create(user_id: "1", eat_time: '2021-02-01 12:34:56', meal_menu_id:5, quantity: 5)
+
+User.create(account_id: "fyx2WUXkwQNk0KD8rryV3bKH4F53", target_weight: rand(50..60), target_body_fat: rand(10..20))
+
+Weight.create(user_id: "1", value: 60, body_fat: 20, measurement_time: '2021-02-01 12:34:56')
+Weight.create(user_id: "1", value: 59.5, body_fat: 19, measurement_time: '2021-02-01 12:34:56')
+Weight.create(user_id: "1", value: 59, body_fat: 18, measurement_time: '2021-02-01 12:34:56')
+Weight.create(user_id: "1", value: 58.5, body_fat: 17, measurement_time: '2021-02-01 12:34:56')
+Weight.create(user_id: "1", value: 58, body_fat: 16, measurement_time: '2021-02-01 12:34:56')
+Weight.create(user_id: "1", value: 57.5, body_fat: 15, measurement_time: '2021-02-01 12:34:56')

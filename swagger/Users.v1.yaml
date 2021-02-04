@@ -1,0 +1,12 @@
+title: Users
+type: object
+properties:
+  id:
+    type: string
+    description: ユーザーID
+  target_weight:
+    description: 名前
+    format: float
+    type: number
+  target_body_fat:
+    type: number

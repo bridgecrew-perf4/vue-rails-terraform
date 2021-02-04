@@ -1,0 +1,25 @@
+title: MealDetail
+type: object
+properties:
+  id:
+    type: integer
+    description: 食事ID
+  calorie:
+    type: number
+    description: カロリー
+    format: float
+  name:
+    type: string
+    description: 食事メニュー名
+  carbohydrate:
+    type: number
+    description: 炭水貨物
+    format: float
+  protein:
+    type: number
+    description: タンパク質
+    format: float
+  lipid:
+    type: number
+    description: 脂質
+    format: float

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  get 'users/show'
-  resources :users, only: [:index, :show]
+  resources :users do
+  resources :exercises, :exercise_menus, :meals, :meal_menus, :users, :weights
+  end  
 end

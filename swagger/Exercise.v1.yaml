@@ -1,0 +1,26 @@
+title: Exercise
+type: object
+properties:
+  id:
+    type: integer
+    description: 運動レコードID
+  exercise_menu_id:
+    description: 運動ID
+    type: integer
+  number:
+    type: integer
+    description: 運動回数
+  set:
+    type: integer
+  time:
+    type: string
+    description: 運動時間
+    format: time
+  distance:
+    type: string
+  exercise_time:
+    type: string
+    format: date-time
+  exercise_detail:
+    $ref: ./ExerciseMenul.v1.yaml
+  
