@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Coin from "../views/Coin.vue";
 
 import Exercises from "../views/Exercises.vue";
 import Exercise from "../views/Exercise.vue";
@@ -20,7 +19,6 @@ import MealMenus from "../views/MealMenus.vue";
 import MealMenu from "../views/MealMenu.vue";
 import MealMenuCreate from "../views/MealMenuCreate.vue";
 
-import Users from "../views/Users.vue";
 import User from "../views/User.vue";
 import UserCreate from "../views/UserCreate.vue";
 
@@ -39,12 +37,6 @@ export default new Router({
       name: "home",
       component: Home
     },
-    {
-      path: "/coin",
-      name: "coin",
-      component: Coin
-    },
-
     // Exercise
     {
       path: "/exercises",
@@ -114,11 +106,6 @@ export default new Router({
     },
 
     // User
-    {
-      path: "/users",
-      name: "users",
-      component: Users
-    },
     {
       path: "/users/:id",
       name: "user",
