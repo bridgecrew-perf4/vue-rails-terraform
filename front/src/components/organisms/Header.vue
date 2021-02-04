@@ -5,7 +5,7 @@
       @click.stop="toggleSideMenu"
     ></v-app-bar-nav-icon>
     <div class="d-flex align-center">
-      DIET AND TRAINING LOG APP
+      {{ title }}
     </div>
     <v-spacer></v-spacer>
     <v-toolbar-items v-if="$store.state.login_user">
@@ -15,31 +15,21 @@
 </template>
 
 <script lang="ts">
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "Header",
   data() {
     return {
+      title: "DIET AND TRAINING LOG APP",
+      btn_name: "ログアウト",
       drawer: null
     };
   },
   methods: {
-    ...mapActions([
-      "toggleSideMenu",
-      "setLoginUser",
-      "logout",
-      "deleteLoginUser"
-    ])
-  },
-  computed: {
-    ...mapGetters(["userName", "photoURL", "uid"])
+    ...mapActions(["toggleSideMenu", "logout"])
   }
 };
 </script>
 
-<style lang="scss" scoped>
-a {
-  text-decoration: none;
-}
-</style>
+<style lang="scss" scoped></style>
