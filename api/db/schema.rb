@@ -10,53 +10,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_29_120613) do
+ActiveRecord::Schema.define(version: 6) do
 
-  create_table "exercise_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "exercise_id"
-    t.integer "number"
-    t.string "exercise_time"
+  create_table "exercise_menus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "user_id"
+    t.string "name"
+    t.decimal "calorie", precision: 5, scale: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "exercises", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "menu"
-    t.integer "calorie"
+    t.string "user_id"
+    t.bigint "exercise_menu_id"
+    t.datetime "exercise_time"
+    t.integer "number"
+    t.integer "set"
+    t.time "time"
+    t.decimal "distance", precision: 6, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["exercise_menu_id"], name: "index_exercises_on_exercise_menu_id"
   end
 
-  create_table "meal_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "meal_id"
-    t.string "meal_time"
-    t.string "quantity"
+  create_table "meal_menus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "user_id"
+    t.string "name"
+    t.decimal "calorie", precision: 5, scale: 1
+    t.decimal "carbohydrate", precision: 6, scale: 2
+    t.decimal "protein", precision: 5, scale: 2
+    t.decimal "lipid", precision: 5, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "meals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "calorie"
-    t.string "name"
-    t.integer "carbohydrate"
-    t.integer "protein"
-    t.integer "lipid"
+    t.string "user_id"
+    t.bigint "meal_menu_id"
+    t.datetime "eat_time"
+    t.string "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["meal_menu_id"], name: "index_meals_on_meal_menu_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.integer "age"
+    t.string "account_id"
+    t.decimal "target_weight", precision: 5, scale: 2
+    t.decimal "target_body_fat", precision: 4, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "weights", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "weight"
-    t.string "measurement_time"
-    t.string "body_fat_percentage"
+    t.string "user_id"
+    t.integer "value"
+    t.integer "body_fat"
+    t.datetime "measurement_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
