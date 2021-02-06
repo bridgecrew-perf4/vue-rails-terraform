@@ -1,77 +1,53 @@
 <template>
-  <v-container text-xs-center>
-    <v-layout row wrap justify-center>
-      <v-flex xs12 class="text-center">
-        <h1>体重編集</h1>
-      </v-flex>
-
-      <v-flex xs5 mt-5>
-        <v-card>
-          <v-card-text>
-            <v-form>
-              <v-text-field
-                v-model="weight.value"
-                label="体重"
-                required
-              ></v-text-field>
-              <v-text-field
-                v-model="weight.body_fat"
-                label="体脂肪率"
-                required
-              ></v-text-field>
-              <v-text-field
-                v-model="weight.measurement_time"
-                label="計測時刻"
-                required
-              ></v-text-field>
-
-              <div class="text-center">
-                <v-btn @click="$router.push({ name: 'weights' })"
-                  >キャンセル</v-btn
-                >
-                <v-btn color="info" class="ml-2" @click="update">保存</v-btn>
-              </div>
-            </v-form>
-          </v-card-text>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <EditForm
+    :table="table"
+    :title="title"
+    :listPage="listPage"
+    :form="form"
+    :inputs="inputs"
+  />
 </template>
 
 <script lang="ts">
+import EditForm from "../components/organisms/EditForm.vue";
 export default {
+  components: {
+    EditForm
+  },
   data() {
     return {
-      weight: []
+      table: "weight",
+      title: "体重ログ",
+      listPage: "weights",
+      form: {
+        value: "",
+        body_fat: "",
+        measurement_time: ""
+      },
+      inputs: [
+        { label: "体重", model_value: "value" },
+        { label: "体脂肪率", model_value: "body_fat" },
+        { label: "計測時刻", model_value: "measurement_time" }
+      ]
     };
   },
-  mounted() {
+  created() {
+    let path = "";
+    const url = "http://localhost:3000";
+    const uid = "fyx2WUXkwQNk0KD8rryV3bKH4F53";
+    const id = this.$route.params["id"];
+    path = "/users/" + uid + "/weights/" + id;
     this.axios
-      .get(
-        `http://localhost:3000/weights/${this.$route.params["id"]}`,
-        this.weight[0]
-      )
-      .then(response => (this.weight = response.data));
-  },
-  methods: {
-    update() {
-      const params = {
-        value: this.weight.value,
-        measurement_time: this.weight.measurement_time,
-        age: this.weight.age
-      };
-      if (this.$route.params.id) {
-        this.axios.put(
-          `http://localhost:3000/weights/${this.$route.params["id"]}`,
-          params
-        );
-        alert("体重情報を更新しました");
-      } else {
-        alert("通信が失敗しました");
-      }
-      this.$router.push({ name: "weights" });
-    }
+      .get(url + path)
+      .then(
+        response => (
+          (this.form.value = response.data.value),
+          (this.form.body_fat = response.data.body_fat),
+          (this.form.measurement_time = response.data.measurement_time)
+        )
+      );
   }
 };
 </script>
+
+<style scoped lang="scss"></style>

@@ -19,7 +19,7 @@ class MealMenusController < ApplicationController
   # GET meal_menus/:id
   def show
     user = User.find_by(account_id: params[:user_id])
-    meal_menu = MealMenu.where(id: params[:id], user_id: user.id)
+    meal_menu = MealMenu.find_by(id: params[:id], user_id: user.id)
     render json: meal_menu
   end
 

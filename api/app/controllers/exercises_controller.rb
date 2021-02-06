@@ -19,7 +19,7 @@ class ExercisesController < ApplicationController
   # GET exercises/:id
   def show
     user = User.find_by(account_id: params[:user_id])
-    exercise = Exercise.where(id: params[:id], user_id: user.id)
+    exercise = Exercise.find_by(id: params[:id], user_id: user.id)
     render json: exercise, each_serializer: ExerciseSerializer
   end
 

@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import CreateForm from "../components/organisms/Form.vue";
+import CreateForm from "../components/organisms/CreateForm.vue";
 export default {
   components: {
     CreateForm

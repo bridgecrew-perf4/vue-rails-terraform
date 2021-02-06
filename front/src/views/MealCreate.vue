@@ -9,26 +9,29 @@
 </template>
 
 <script lang="ts">
-import CreateForm from "../components/organisms/Form.vue";
+import CreateForm from "../components/organisms/CreateForm.vue";
 export default {
   components: {
     CreateForm
   },
-
   data() {
     return {
-      table: "meal",
-      title: "食事ログ作成",
-      listPage: "meals",
+      table: "mealMenu",
+      title: "食品メニュー編集",
+      listPage: "mealMenus",
       form: {
-        meal_menu_id: "",
-        eat_time: "",
-        quantity: ""
+        name: "",
+        calorie: "",
+        carbohydrate: "",
+        protein: "",
+        lipid: ""
       },
       inputs: [
-        { label: "名前", model_value: "meal_menu_id" },
-        { label: "食事時刻", model_value: "eat_time" },
-        { label: "数量", model_value: "quantity" }
+        { label: "名前", model_value: "name" },
+        { label: "カロリー", model_value: "calorie" },
+        { label: "炭水化物", model_value: "carbohydrate" },
+        { label: "タンパク質", model_value: "protein" },
+        { label: "脂質", model_value: "lipid" }
       ]
     };
   }
