@@ -1,73 +1,53 @@
 <template>
-  <v-container text-xs-center>
-    <v-layout row wrap justify-center>
-      <v-flex xs12 class="text-center">
-        <h1>食事編集</h1>
-      </v-flex>
-
-      <v-flex xs5 mt-5>
-        <v-card>
-          <v-card-text>
-            <v-form>
-              <v-text-field v-model="meal.meal_menu_id" required>
-              </v-text-field>
-              <v-text-field
-                v-model="meal.quantity"
-                label="数量"
-                required
-              ></v-text-field>
-              <v-text-field
-                v-model="meal.eat_time"
-                label="食事時間"
-                required
-              ></v-text-field>
-              <div class="text-center">
-                <v-btn @click="$router.push({ name: 'meals' })"
-                  >キャンセル</v-btn
-                >
-                <v-btn color="info" class="ml-2" @click="update">保存</v-btn>
-              </div>
-            </v-form>
-          </v-card-text>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <EditForm
+    :table="table"
+    :title="title"
+    :listPage="listPage"
+    :form="form"
+    :inputs="inputs"
+  />
 </template>
 
 <script lang="ts">
+import EditForm from "../components/organisms/EditForm.vue";
 export default {
+  components: {
+    EditForm
+  },
   data() {
     return {
-      meal: []
+      table: "meal",
+      title: "食事ログ編集",
+      listPage: "meals",
+      form: {
+        meal_menu_id: "",
+        eat_time: "",
+        quantity: ""
+      },
+      inputs: [
+        { label: "名前", model_value: "meal_menu_id" },
+        { label: "食事時刻", model_value: "eat_time" },
+        { label: "数量", model_value: "quantity" }
+      ]
     };
   },
-  mounted() {
+  created() {
+    let path = "";
+    const url = "http://localhost:3000";
+    const uid = "fyx2WUXkwQNk0KD8rryV3bKH4F53";
+    const id = this.$route.params["id"];
+    path = "/users/" + uid + "/meals/" + id;
     this.axios
-      .get(
-        `http://localhost:3000/meals/${this.$route.params["id"]}`,
-        this.meal[0]
-      )
-      .then(response => (this.meal = response.data));
-  },
-  methods: {
-    update() {
-      const params = {
-        meal_menu_id: this.meal.meal_menu_id,
-        quantity: this.meal.quantity,
-        eat_time: this.meal.eat_time
-      };
-      if (this.$route.params.id) {
-        this.axios.put(
-          `http://localhost:3000/meals/${this.$route.params["id"]}`,
-          params
-        );
-        alert("食事情報を更新しました");
-      } else {
-        alert("通信が失敗しました");
-      }
-      this.$router.push({ name: "meals" });
-    }
+      .get(url + path)
+      .then(
+        response => (
+          (this.form.meal_menu_id = response.data.meal_menu_id),
+          (this.form.eat_time = response.data.eat_time),
+          (this.form.quantity = response.data.quantity)
+        )
+      );
   }
 };
 </script>
+
+<style scoped lang="scss"></style>
