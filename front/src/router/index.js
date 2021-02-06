@@ -61,7 +61,7 @@ export default new Router({
       component: ExerciseMenus
     },
     {
-      path: "/exercises/:id",
+      path: "/exercises_menus/:id",
       name: "exerciseMenu",
       component: ExerciseMenu
     },
@@ -95,7 +95,7 @@ export default new Router({
       component: MealMenus
     },
     {
-      path: "/meal_menu",
+      path: "/meal_menu/:id",
       name: "mealMenu",
       component: MealMenu
     },

@@ -18,7 +18,8 @@ class ExerciseMenusController < ApplicationController
 
   # GET exercise_menus/:id
   def show
-    exercise_menu = ExerciseMenu.find(params[:id])
+    user = User.find_by(account_id: params[:user_id])
+    exercise_menu = ExerciseMenu.find_by(id: params[:id], user_id: user.id)
     render json: exercise_menu, each_serializer: ExerciseMenuSerializer
   end
 
