@@ -2,7 +2,7 @@ import App from "./App.vue";
 import axios from "axios";
 import firebase from "firebase";
 import router from "./router";
-import store from "./store";
+import store from "./store/index";
 import Vue from "vue";
 import VueAxios from "vue-axios";
 import vuetify from "./plugins/vuetify";
