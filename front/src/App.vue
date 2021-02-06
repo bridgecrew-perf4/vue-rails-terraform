@@ -23,18 +23,6 @@ export default {
     SideNav,
     Footer
   },
-  beforeCreate() {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setLoginUser(user);
-        if (this.$router.currentRoute.name === "home")
-          this.$router.push({ name: "weights" });
-      } else {
-        this.deleteLoginUser();
-        this.$router.push({ name: "home" });
-      }
-    });
-  },
   created() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -46,13 +34,18 @@ export default {
         this.$router.push({ name: "home" });
       }
     });
-   
   },
   methods: {
-    ...mapActions(["setLoginUser", "logout", "deleteLoginUser"])
+    ...mapActions([
+      "toggleSideMenu",
+      "setLoginUser",
+      "login",
+      "logout",
+      "deleteLoginUser"
+    ])
   },
   computed: {
-    ...mapGetters(["uid"])
+    ...mapGetters(["userName", "photoURL", "uid"])
   }
 };
 </script>
