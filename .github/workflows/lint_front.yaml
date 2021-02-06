@@ -1,0 +1,15 @@
+name: Lint Swagger
+
+on:
+  push:
+
+jobs:
+  setup-lint:
+    name: Lint Front
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node Environment
+        uses: actions/setup-node@v1
+
+      - name: Lint Front
+        run: npm run lint
